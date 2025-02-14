@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hoho_mail/screens/RegisterScreen/registerScreen.dart';
+import 'package:hoho_mail/services/authService.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -11,8 +12,10 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
-    var orange = Colors.orange;
+    final                       formKey             = GlobalKey<FormState>();
+    final TextEditingController emailController     = TextEditingController();
+    final TextEditingController passwordController  = TextEditingController();
+    var                         orange              = Colors.orange;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body:Container(
@@ -77,6 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   border: Border(bottom: BorderSide(color: Colors.grey[200]!))
                                 ),
                                 child: TextFormField(
+                                  controller: emailController,
                                   validator: (value) {
                                     if(value == null || value.isEmpty){
                                       return 'Please Enter Some Text';
@@ -96,6 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   border: Border(bottom: BorderSide(color: Colors.grey[200]!))
                                 ),
                                 child: TextFormField(
+                                  controller: passwordController,
                                   validator: (value) {
                                     if(value == null || value.isEmpty){
                                       return 'Please Enter Some Text';
@@ -116,10 +121,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 40,),
                         SizedBox(child: MaterialButton(
                           onPressed: (){
-                            if(formKey.currentState!.validate()){
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('Success')),
-                              );
+                            if (formKey.currentState!.validate()) {
+                              String email = emailController.text.trim();
+                              String password = passwordController.text.trim();
+                              
+                              AuthService().signup(email: email, password: password,context: context);
                             }
                           },
                           height: 50,

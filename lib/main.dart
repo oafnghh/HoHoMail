@@ -5,9 +5,14 @@ import 'package:hoho_mail/screens/LoginScreen/loginScreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    print(" Firebase đã khởi tạo thành công!");
+  } catch (e) {
+    print("Lỗi khi khởi tạo Firebase: $e");
+  }
 
   runApp(const MyApp());
 }

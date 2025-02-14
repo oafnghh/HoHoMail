@@ -11,8 +11,8 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
-    var orange = Colors.orange;
-    final formKey = GlobalKey<FormState>();
+    var           orange            = Colors.orange;
+    final         formKey           = GlobalKey<FormState>();
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body:Container(
