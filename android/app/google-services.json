@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "465332150244",
+    "project_id": "hohomail-8ab7e",
+    "storage_bucket": "hohomail-8ab7e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465332150244:android:81221fe27c3173b3bb71f1",
+        "android_client_info": {
+          "package_name": "com.example.hoho_mail"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBirUDAmX5yORLCsEuAa_9fswaC6LRzh60"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

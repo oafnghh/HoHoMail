@@ -118,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           onPressed: (){
                             if(formKey.currentState!.validate()){
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('hihih')),
+                                const SnackBar(content: Text('Success')),
                               );
                             }
                           },
