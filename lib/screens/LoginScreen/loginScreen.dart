@@ -121,11 +121,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 40,),
                         SizedBox(child: MaterialButton(
                           onPressed: (){
-                            if (formKey.currentState!.validate()) {
+                            if(formKey.currentState!.validate())
+                            {
                               String email = emailController.text.trim();
-                              String password = passwordController.text.trim();
-                              
-                              AuthService().signup(email: email, password: password,context: context);
+                              String password = passwordController.text.trim();                        
+                              AuthService().signin(email: email, password: password,context: context);
                             }
                           },
                           height: 50,

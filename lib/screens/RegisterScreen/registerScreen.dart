@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hoho_mail/screens/LoginScreen/loginScreen.dart';
 
+import '../../services/authService.dart';
+
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
@@ -13,6 +15,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     var           orange            = Colors.orange;
     final         formKey           = GlobalKey<FormState>();
+    final TextEditingController emailController     = TextEditingController();
+    final TextEditingController passwordController  = TextEditingController();
+    final TextEditingController nameController     = TextEditingController();
+    final TextEditingController phoneController  = TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body:Container(
@@ -77,6 +83,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   border: Border(bottom: BorderSide(color: Colors.grey[200]!))
                                 ),
                                 child: TextFormField(
+                                  controller: emailController,
                                   validator: (value) {
                                     if(value == null || value.isEmpty){
                                       return 'Please Enter Some Text';
@@ -96,6 +103,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   border: Border(bottom: BorderSide(color: Colors.grey[200]!))
                                 ),
                                 child: TextFormField(
+                                  controller: passwordController,
                                   validator: (value) {
                                     if(value == null || value.isEmpty){
                                       return 'Please Enter Some Text';
@@ -115,6 +123,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   border: Border(bottom: BorderSide(color: Colors.grey[200]!))
                                 ),
                                 child: TextFormField(
+                                  controller: nameController,
+                                  validator: (value) {
+                                    if(value == null || value.isEmpty){
+                                      return 'Please Enter Some Text';
+                                    }
+                                    return null;
+                                  },
                                   decoration: InputDecoration(
                                     hintText: "What is your name ?",
                                     hintStyle: TextStyle(color: Colors.grey),
@@ -127,6 +142,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   border: Border(bottom: BorderSide(color: Colors.grey[200]!))
                                 ),
                                 child: TextFormField(
+                                  controller: phoneController,
+                                  validator: (value) {
+                                    if(value == null || value.isEmpty){
+                                      return 'Please Enter Some Text';
+                                    }
+                                    return null;
+                                  },
                                   decoration: InputDecoration(
                                     hintText: "What is your number phone ?",
                                     hintStyle: TextStyle(color: Colors.grey),
@@ -141,10 +163,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       SizedBox(height: 40,),
                       SizedBox(child: MaterialButton(
                         onPressed: (){
-                          if(formKey.currentState!.validate()){
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('Success')),
-                              );
+                          if (formKey.currentState!.validate()) {
+                            String email    = emailController   .text.trim();
+                            String password = passwordController.text.trim();
+                            String name     = nameController    .text.trim();
+                            String phone    = phoneController   .text.trim();
+                            AuthService().signup(name:name,email: email, password: password,phone:phone,context: context);
                           }
                         },
                         height: 50,
