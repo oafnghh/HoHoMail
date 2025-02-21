@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hoho_mail/firebase_options.dart';
+import 'package:hoho_mail/screens/HomeScreen/homeScreen.dart';
 import 'package:hoho_mail/screens/LoginScreen/loginScreen.dart';
 
 void main() async {
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const LoginScreen(),
+      home: const HomeScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
