@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hoho_mail/screens/HomeScreen/widgets/CategoryWidget.dart';
+import 'package:hoho_mail/screens/HomeScreen/widgets/CircleIconButtonWidget.dart';
+import 'package:hoho_mail/screens/HomeScreen/widgets/SlideShowWidget.dart';
 
 class HomeScreen extends StatefulWidget {
   static var routeName = "/home";
@@ -13,122 +16,65 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: SafeArea(
-        child:SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                const SlideShow(),
+                CategoryWidget()
+              ],
+            ),
+          ),
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: SafeArea( // Thêm SafeArea để tránh đè lên status bar
+              child: Container(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
                       width: screenWidth * 0.6,
-                   //   height: 50,
                       decoration: BoxDecoration(
-                        color: Colors.grey.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(15)
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
                       ),
                       child: TextField(
-                        onChanged: (value){},
-                        decoration: InputDecoration(
+                        onChanged: (value) {},
+                        decoration: const InputDecoration(
                           isDense: true,
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
                           hintText: "Tìm kiếm sản phẩm",
-                          prefixIcon: Icon(Icons.search, color: Colors.grey),
+                          prefixIcon: Icon(Icons.search, color: Color.fromARGB(255, 9, 9, 9)),
                           contentPadding: EdgeInsets.symmetric(vertical: 15.0),
                         ),
                       ),
                     ),
-                    InkWell(
-                      onTap: (){},
-                      borderRadius: BorderRadius.circular(50),
-                      child: Stack(
-                        children: [
-                          Container(
-                            height: 50,
-                            width : 50,
-                            decoration: BoxDecoration(
-                              color: Colors.grey.withOpacity(0.1),
-                              shape: BoxShape.circle
-                            ),
-                            child: Icon(
-                              Icons.notifications,
-                              color: Colors.black54,
-                              size: 24, 
-                            ),
-                          ),
-                          Container(
-                            height: 16,
-                            width: 16,
-                            decoration: BoxDecoration(
-                              color: Colors.redAccent,
-                              shape: BoxShape.circle,
-                              border: Border.all(width: 1.5, color: Colors.white),
-                            ),
-                            child: Center( 
-                              child: Text(
-                                "3",
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold, 
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
+                    CircleIconButton(
+                      icon: Icons.notifications,
+                      notificationCount: 3,
+                      onTap: () {
+                        print("Thông báo được nhấn");
+                      },
                     ),
-                    InkWell(
-                      onTap: (){},
-                      borderRadius: BorderRadius.circular(50),
-                      child: Stack(
-                        children: [
-                          Container(
-                            height: 50,
-                            width : 50,
-                            decoration: BoxDecoration(
-                              color: Colors.grey.withOpacity(0.1),
-                              shape: BoxShape.circle
-                            ),
-                            child: Icon(
-                              Icons.shopping_cart,
-                              color: Colors.black54,
-                              size: 24, 
-                            ),
-                          ),
-                          Container(
-                            height: 16,
-                            width: 16,
-                            decoration: BoxDecoration(
-                              color: Colors.redAccent,
-                              shape: BoxShape.circle,
-                              border: Border.all(width: 1.5, color: Colors.white),
-                            ),
-                            child: Center( 
-                              child: Text("3",
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold, 
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    )
+                    CircleIconButton(
+                      icon: Icons.shopping_cart,
+                      notificationCount: 3,
+                      onTap: () {
+                        print("Giỏ hàng được nhấn");
+                      },
+                    ),
                   ],
                 ),
-              )
-            ],
-          )
-        ),
-      )
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
