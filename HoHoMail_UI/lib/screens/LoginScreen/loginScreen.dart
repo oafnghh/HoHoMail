@@ -3,6 +3,8 @@ import 'package:hoho_mail/screens/RegisterScreen/registerScreen.dart';
 import 'package:hoho_mail/services/authService.dart';
 
 class LoginScreen extends StatefulWidget {
+  static var routeName    ="/signIn";
+
   const LoginScreen({super.key});
 
   @override
@@ -143,9 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           children:<Widget>[
                             Text("Tôi chưa có tài khoản ?",),
                             TextButton(onPressed:(){
-                            Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context)=> const RegisterScreen()),
-                            );
+                              Navigator.pushNamed(context, RegisterScreen.routeName);
                             } , child: Text("Đăng kí", style: TextStyle(color: const Color.fromARGB(255, 91, 62, 223), fontWeight: FontWeight.bold),)),
                           ]
                         )
