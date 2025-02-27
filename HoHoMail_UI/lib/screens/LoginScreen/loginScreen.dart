@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hoho_mail/screens/RegisterScreen/registerScreen.dart';
-import 'package:hoho_mail/services/authService.dart';
 
 class LoginScreen extends StatefulWidget {
   static var routeName    ="/signIn";
@@ -123,12 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 40,),
                         SizedBox(child: MaterialButton(
                           onPressed: (){
-                            if(formKey.currentState!.validate())
-                            {
-                              String email = emailController.text.trim();
-                              String password = passwordController.text.trim();                        
-                              AuthService().signin(email: email, password: password,context: context);
-                            }
+                            
                           },
                           height: 50,
                           color: Colors.orange[900]!,
