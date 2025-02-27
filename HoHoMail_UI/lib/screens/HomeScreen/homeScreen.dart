@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hoho_mail/screens/HomeScreen/widgets/CategoryWidget.dart';
 import 'package:hoho_mail/screens/HomeScreen/widgets/CircleIconButtonWidget.dart';
+import 'package:hoho_mail/screens/HomeScreen/widgets/ProductWidget.dart';
 import 'package:hoho_mail/screens/HomeScreen/widgets/SlideShowWidget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -22,7 +23,9 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               children: [
                 const SlideShow(),
-                CategoryWidget()
+                CategoryWidget(),
+                SizedBox(height: 20),
+                ProductWidget()
               ],
             ),
           ),
@@ -30,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
             top: 0,
             left: 0,
             right: 0,
-            child: SafeArea( // Thêm SafeArea để tránh đè lên status bar
+            child: SafeArea( 
               child: Container(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
